@@ -58,23 +58,32 @@ if(actions=='no') setAllActions('no');
           </TableHead>
 
           <TableBody>
-            {array.map((item) => (
-              <StyledTableRow key={item?._id}>
-                {distract.map((path, index) => (
-                  <StyledTableCell key={index} align="center">
-                    {String(eval(`item${path}`))}
-                  </StyledTableCell>
-                ))}
-                
-                <StyledTableCell  sx={{margin:0, padding:0,width:"10px" }} align="center">
-                  <Button type="submit" sx={{padding:0}} onClick={()=>{                    
-                  setId(item?._id)
-                  }} >
-                  <Actions openUpdateModel={openUpdateModel}  allActions={allActions} id={item?._id} curruntItem={item} openDeleteModal={openDeleteModal} openViewModal={openViewModal} name={name}/>
-                  </Button>
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
+          {array.map((item) => (
+  <StyledTableRow key={item?._id}>
+    {distract.map((path, index) => (
+      <StyledTableCell key={index} align="center">
+        {path.includes("facilities")
+          ? item?.facilities?.map(facility => facility.name).join(", ")
+          : String(eval(`item${path}`))
+        }
+      </StyledTableCell>
+    ))}
+    <StyledTableCell sx={{ margin: 0, padding: 0, width: "10px" }} align="center">
+      <Button type="submit" sx={{ padding: 0 }} onClick={() => setId(item?._id)}>
+        <Actions
+          openUpdateModel={openUpdateModel}
+          allActions={allActions}
+          id={item?._id}
+          curruntItem={item}
+          openDeleteModal={openDeleteModal}
+          openViewModal={openViewModal}
+          name={name}
+        />
+      </Button>
+    </StyledTableCell>
+  </StyledTableRow>
+))}
+
           </TableBody>
         </Table>
       </TableContainer>

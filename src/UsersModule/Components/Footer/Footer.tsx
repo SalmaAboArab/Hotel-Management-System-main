@@ -29,7 +29,7 @@ export default function Footer() {
   });
   return (
     <>
-      <Divider component={"hr"} sx={{ bgcolor: 'black',height:1,my:2 }} />
+      <Divider component={"hr"} sx={{ bgcolor: 'black',height:1,my:2}} />
       <Container maxWidth="xl">
         <Grid container  spacing={1}>
           <Grid sx={style} item xs={12} sm={6} md={3}>
@@ -139,7 +139,7 @@ export default function Footer() {
           </Grid>
           
           <Typography
-            sx={{ textAlign: "center", width: "100%", marginY: 3 , opacity:"0.5"}}
+            sx={{ textAlign: "center", width: "100%", mb: 3 , mt: 4 , opacity:"0.5"}}
             variant="body1"
           >
             Copyright 2019 • All rights reserved • Staycation

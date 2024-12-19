@@ -76,7 +76,6 @@ export default function Actions({
     setAnchorEl(null);
   };
 const navigateTo=useNavigate();
-  const token=localStorage.getItem('adminToken');
 
 
   const [valuesItem, setValuesItem] = React.useState({})
@@ -84,7 +83,7 @@ const navigateTo=useNavigate();
     try {
       const { data } = await axios.get(`${baseUrl}/admin/ads/${id}`, {
         headers: {
-          Authorization:token
+          Authorization:localStorage.getItem("adminToken")
         },
       });
       setValuesItem(data.data.ads)
@@ -149,7 +148,7 @@ const navigateTo=useNavigate();
                 handleOpenAdd();
               getOneAds();
               }
-              else if(name=='facilities'){
+              else if(name === 'facilities'){
                 openUpdateModel(curruntItem)
               }
               else if(name=='rooms'){
@@ -157,7 +156,7 @@ const navigateTo=useNavigate();
                   localStorage.setItem(
                     "id",id );
 
-                  navigateTo(`/Admin/rooms/updateRoom/${id}`,{state:{room:curruntItem}});
+                  navigateTo(`/Admin/rooms/update-room/${id}`,{state:{room:curruntItem}});
                 }
               
               handleClose()
@@ -170,7 +169,6 @@ const navigateTo=useNavigate();
             }
             <MenuItem
               onClick={() => {
-                // localStorage.setItem("curruntItemId", id);
                 openDeleteModal(curruntItem);
                 handleClose()
               }}

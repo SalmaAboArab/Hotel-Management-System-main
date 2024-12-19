@@ -82,7 +82,7 @@ export default function AdsList() {
     try {
       const { data } = await axios.get(`${baseUrl}/admin/ads`, {
         headers: {
-          Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjBmNzU5ODZlYmJiZWZiYzE5ZWEyMmUiLCJyb2xlIjoiYWRtaW4iLCJ2ZXJpZmllZCI6ZmFsc2UsImlhdCI6MTcxMzMwNDczMywiZXhwIjoxNzE0NTE0MzMzfQ.T4R-kftCVUlZuPZddbWyVrcBUPN7bMY6O7Z3jHMY9D0",
+          Authorization:localStorage.getItem("adminToken")
         },
       });
 
@@ -100,7 +100,9 @@ export default function AdsList() {
   }, []);
   useEffect(() => {
     getAdsList();
-  }, [openAdd]);
+  },[openAdd]);
+  console.log("dfd");
+  
 
 
   

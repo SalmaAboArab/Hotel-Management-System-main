@@ -130,9 +130,9 @@ export default function AddAds({
     try {
       const { data } = await axios.get(`${baseUrl}/admin/rooms`, {
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjBmNzU5ODZlYmJiZWZiYzE5ZWEyMmUiLCJyb2xlIjoiYWRtaW4iLCJ2ZXJpZmllZCI6ZmFsc2UsImlhdCI6MTcxMzMwNDczMywiZXhwIjoxNzE0NTE0MzMzfQ.T4R-kftCVUlZuPZddbWyVrcBUPN7bMY6O7Z3jHMY9D0",
-        },
+          Authorization:localStorage.getItem("adminToken")
+
+        }
       });
       setRoomName(data.data.rooms);
     } catch (error) {
@@ -151,9 +151,9 @@ export default function AddAds({
     try {
       const data = await axios.post(`${baseUrl}/admin/ads`, values, {
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjBmNzU5ODZlYmJiZWZiYzE5ZWEyMmUiLCJyb2xlIjoiYWRtaW4iLCJ2ZXJpZmllZCI6ZmFsc2UsImlhdCI6MTcxMzMwNDczMywiZXhwIjoxNzE0NTE0MzMzfQ.T4R-kftCVUlZuPZddbWyVrcBUPN7bMY6O7Z3jHMY9D0",
-        },
+          Authorization:localStorage.getItem("adminToken")
+
+        }
       });
       toast.success(data?.statusText);
       setDiscount("");
@@ -171,9 +171,8 @@ export default function AddAds({
     try {
       const { data } = await axios.put(`${baseUrl}/admin/ads/${id}`, values, {
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjBmNzU5ODZlYmJiZWZiYzE5ZWEyMmUiLCJyb2xlIjoiYWRtaW4iLCJ2ZXJpZmllZCI6ZmFsc2UsImlhdCI6MTcxMzMwNDczMywiZXhwIjoxNzE0NTE0MzMzfQ.T4R-kftCVUlZuPZddbWyVrcBUPN7bMY6O7Z3jHMY9D0",
-        },
+          Authorization:localStorage.getItem("adminToken")
+        }
       });
 
       toast.success(data?.message);

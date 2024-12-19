@@ -1,42 +1,30 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 
 
 import {
-  TextField,
-  Button,
-  Typography,
   Box,
-  Grid,
+  Button,
   Container,
-  OutlinedInput,
-  InputAdornment,
-  IconButton,
+  Grid,
+  TextField,
+  Typography
 } from "@mui/material";
 import axios from "axios";
-import loginImage from "../../../assets/login.png";
-import { baseUrl } from "../../../Constants/Components/Urls";
-import { toast } from "react-toastify";
-import styles from "./Login.module.css";
-import { emailValidation,passwordValidation } from "../Validators/Validators";
 import { jwtDecode } from "jwt-decode";
+import { toast } from "react-toastify";
+import { baseUrl } from "../../../Constants/Components/Urls";
+import loginImage from "../../../assets/login.png";
+import { emailValidation } from "../Validators/Validators";
+import styles from "./Login.module.css";
+import { ThreeDots } from "react-loader-spinner";
 
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();  
-
-
-  const saveLoginData=()=>{
-    const encodedToken:any=localStorage.getItem("adminToken");
-    const decodedToken:any=jwtDecode(encodedToken);      
-    localStorage.setItem('loginData',JSON.stringify(decodedToken)); 
-    localStorage.setItem('userRole',JSON.stringify(decodedToken?.userGroup)); 
-     
-  }
-
 
   async function callLoginApi(data: { email: string }) {
     try {
@@ -47,8 +35,20 @@ export default function Login() {
       );
       toast.success(response.data.message);
       localStorage.setItem("adminToken",response?.data?.data?.token); 
-      saveLoginData(); 
-      navigate("/Admin");
+      // saveLoginData(); 
+      const encodedToken:any=localStorage.getItem("adminToken");
+    const decodedToken:any=jwtDecode(encodedToken); 
+    let role=decodedToken?.role;
+    localStorage.setItem('loginData',JSON.stringify(decodedToken)); 
+    localStorage.setItem('userRole',JSON.stringify(decodedToken?.role)); 
+
+      if(role=='user'){
+        navigate("/");
+      }
+      else{
+        navigate("/Admin");
+      }
+
     } catch (error) {
       toast.error(error?.response?.data?.message || "There's a mistake.");
     } finally {
@@ -80,6 +80,8 @@ export default function Login() {
         spacing={0}
         sx={{
           justifyContent: "space-around",
+          alignItems: { xs: "center", lg: "start" }
+
         }}
       >
           
@@ -99,12 +101,12 @@ export default function Login() {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-evenly",
-              marginLeft:"60px"
+              // marginLeft:"60px"
             }}
           >
       
-            <Box>
-              <Typography fontWeight={600} variant="h5">
+            <Box mb={4}>
+              <Typography fontWeight={600} mb={3} variant="h5">
               Sign in
               </Typography>
               <Typography variant="body1">
@@ -112,12 +114,13 @@ export default function Login() {
                 <Link
                   to={"/Authentication/register"}
                   style={{
-                    color: "#152C5B",
+                    color: "#eb5148",
                     textDecoration: "none",
                     fontWeight: 600,
                     marginLeft: 5,
                   }}
                 >
+                  
                   Register here !
                 </Link>
               </Typography>
@@ -142,7 +145,7 @@ export default function Login() {
                   {...register("email", emailValidation)}
                 />
                 {errors.email && (
-                  <Typography variant="body2" sx={{ color: "red" }}>
+                  <Typography variant="body2" sx={{ color: "error.light" }}>
                     {errors.email.message}
                   </Typography>
                 )}
@@ -156,10 +159,12 @@ export default function Login() {
                   type="password"
                   id="password"
                   placeholder="Please type here ..."
-                  {...register("password", passwordValidation)}
+                  {...register("password",{required:"Password is required"}
+                  //  passwordValidation
+                  )}
                 />
                 {errors.password && (
-                  <Typography variant="body2" sx={{ color: "red" }}>
+                  <Typography variant="body2" sx={{ color: "error.light" }}>
                     {errors.password.message}
                   </Typography>
                 )}
@@ -175,33 +180,21 @@ export default function Login() {
               </Link>
               </Box>
 
-             {/*<Box sx={{ display: "flex", flexDirection: "column" }}>
-                <label htmlFor="password" style={{ fontSize: "1.3rem", fontWeight: 500, opacity: 0.8 }}>Password</label>
-                <OutlinedInput
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} edge="end">
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                  sx={{ marginTop: 1, marginBottom: 1, bgcolor: "#f5f6f8" }}
-                  type={showPassword ? 'text' : 'password'}
-                  id="password"
-                  placeholder="Please type here ..."
-                  {...register("password", passwordValidation)}
-                />
-                {errors.password && (
-                  <Typography variant="body2" sx={{ color: "red" }}>
-                    {errors.password.message}
-                  </Typography>
-                )}
-              </Box>*/} 
-              
-
-              <Button disabled={isLoading} sx={{paddingY:2,marginTop:5}}   type="submit" variant="contained" >
+              <Button disabled={isLoading}                     sx={{ mt: 5, mb: 2, bgcolor: "#3252DF", py: 2,height:"50px" }}
+   type="submit" variant="contained" >
                 {isLoading ? (
-                  <span className={styles.loader}></span>
+                  
+ <ThreeDots
+  visible={true}
+  height="80"
+  width="80"
+  color="#1966d2"
+  radius="9"
+  ariaLabel="three-dots-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  />  
+              
                 ) : (
                   "Login"
                 )}

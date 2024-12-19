@@ -52,10 +52,8 @@ export default function FacilitiesList() {
         `${baseUrl}/admin/room-facilities/${currentFacility?._id}`,
         data,{
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjBmNzU5ODZlYmJiZWZiYzE5ZWEyMmUiLCJyb2xlIjoiYWRtaW4iLCJ2ZXJpZmllZCI6ZmFsc2UsImlhdCI6MTcxMzMxNDk2NywiZXhwIjoxNzE0NTI0NTY3fQ.hZHGyq8URhmMYQ11qie8VUDRyU1JY9LujY8j7_XIamY",
-          },
-        }
+            Authorization:localStorage.getItem("adminToken")
+          }}
       );
       //console.log(response)
       toast.success("Facility Updated Succeefully");
@@ -88,8 +86,8 @@ async function onSubmitAddFacilities(data:object) {
   try {
     const response = await axios.post(`${baseUrl}/admin/room-facilities`,data, {
       headers: {
-        Authorization:token
-      },
+        Authorization:localStorage.getItem("adminToken")   
+         },
       
     });
    //console.log(response)
@@ -118,9 +116,8 @@ async function onSubmitAddFacilities(data:object) {
         data,
         {
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjBmNzU5ODZlYmJiZWZiYzE5ZWEyMmUiLCJyb2xlIjoiYWRtaW4iLCJ2ZXJpZmllZCI6ZmFsc2UsImlhdCI6MTcxMzMxNDk2NywiZXhwIjoxNzE0NTI0NTY3fQ.hZHGyq8URhmMYQ11qie8VUDRyU1JY9LujY8j7_XIamY",
-          },
+            Authorization:localStorage.getItem("adminToken")
+          }
         }
       );
       //console.log(response)
@@ -192,9 +189,8 @@ async function onSubmitAddFacilities(data:object) {
         `${baseUrl}/admin/room-facilities?page=${countPage}&size=10`,
         {
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjFkODg3NDZlYmJiZWZiYzE5ZjgzNTIiLCJyb2xlIjoiYWRtaW4iLCJ2ZXJpZmllZCI6ZmFsc2UsImlhdCI6MTcxMzIxMTU0NywiZXhwIjoxNzE0NDIxMTQ3fQ.7MqD3AXL084Rdk-yMz64VGk_X2-zAo0x0qArnEnSJfo",
-          },
+            Authorization:localStorage.getItem("adminToken")
+          }
         }
       );
 

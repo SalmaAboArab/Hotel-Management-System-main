@@ -9,7 +9,7 @@ export default function AdminLayout() {
         <div>
           <Sidebar />
         </div>
-        <div className="m-3 w-100">
+        <div className="w-100">
           <Navbar />
           <Outlet />
         </div>

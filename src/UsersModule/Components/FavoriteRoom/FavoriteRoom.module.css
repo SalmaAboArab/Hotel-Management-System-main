@@ -1,0 +1,27 @@
+.member{
+    position: relative;
+    
+}
+.icon{
+    color: red;
+    
+    cursor: pointer;
+}
+.memberCaption{
+   position: absolute;
+   top: 0;
+   left:0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(22, 30, 52, 0.5);
+   transition: opacity 0.5s;
+   opacity: 0;
+   display: flex;
+    justify-content: center;
+   align-items: center;
+  
+}
+
+.member:hover .memberCaption{
+    opacity:1;
+}

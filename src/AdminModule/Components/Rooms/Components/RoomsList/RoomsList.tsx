@@ -20,7 +20,7 @@ export default function RoomsList() {
    " discount",
    " price",
     "capacity",
-    "images",
+    // "images",
     "facilities",
     ""
   ];
@@ -29,7 +29,7 @@ export default function RoomsList() {
    " .discount",
    " .price",
     ".capacity",
-    `.imagePath`,
+    // `.imagePath`,
     ".facilities",
   ];
 
@@ -45,16 +45,14 @@ export default function RoomsList() {
     boxShadow: 24,
     p: 4,
   };
-  const name="rooms";
-
   const gitAllRoom=async()=>{
     const token=localStorage.getItem('adminToken');
 try {
   setIsLoading(true)
   const {data}=await axios.get(`${baseUrl}/admin/rooms` ,
    {headers:{Authorization:token}})
-  console.log(data.data.rooms)
-  setRoomList(data?.data?.rooms);
+   setRoomList(data?.data?.rooms);
+   console.log(data.data.rooms)
 
 } catch (error) {
   console.error("Error fetching rooms:", error)
@@ -122,7 +120,7 @@ gitAllRoom();
       :''}
       {openViewModal?
       <ViewModal closeModal={handleCloseViewModal} curruntItem={curruntRoom}
-       paths={distract} lables={headerTableArray}/>
+       paths={distract}   lables={headerTableArray}/>
       :''}
      
 

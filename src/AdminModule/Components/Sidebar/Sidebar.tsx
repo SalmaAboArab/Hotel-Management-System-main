@@ -106,9 +106,9 @@ export default function Sidebar() {
       </Modal>
 
   
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex'  }}>
       <CssBaseline />
-      <Drawer variant="permanent" open={open} className='sidBar'>
+      <Drawer variant="permanent"  open={open} className='sidBar'>
         <DrawerHeader>
       
           <IconButton onClick={handleToggle}>
@@ -116,7 +116,7 @@ export default function Sidebar() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List sx={{backgroundColor:"#203FC7",color:"white",height:"100vh"}}>
+        <List sx={{backgroundColor:"#203FC7",color:"white",height:"100%" }}>
 
             <ListItem  disablePadding sx={{ display: 'block' }}>
               <ListItemButton

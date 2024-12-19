@@ -36,24 +36,26 @@ export default function AdminHome() {
     // <Box sx={{ flexGrow: 1 }}></Box>
     <Grid container component="main" sx={{ height: "100vh" }}>
       <Grid
+      py={5}
       container
-      columnGap={3}
+      columnGap={1}
+      rowGap={3}
       direction="row"
       justifyContent="center"
       alignItems="center"
       sx={{boxShadow:'none', 
-      // mx:3,pt:5
+      
     }}
     >
 
         <Grid item
-      xs={5}
+      xs={11}
       sm={5}
       md={3}
       component={Paper}
       elevation={6}
       square
-      sx={{boxShadow:'none',bgcolor:'#3654d7',color:'white',borderRadius:'10px',textAlign:'center',alignContent:"center",py:2,height:'30%'}}
+      sx={{boxShadow:'none',bgcolor:'#3654d7',color:'white',borderRadius:'10px',textAlign:'center',alignContent:"center",py:2,height:'fit-content'}}
       >
        <Link to={'rooms'} style={{textDecoration:'none',color:'white'}}>
        <Box sx={{display:'flex',justifyContent:'space-evenly',alignItems:'center'}}>
@@ -61,20 +63,20 @@ export default function AdminHome() {
        <h5>Rooms</h5>
        </Typography>
         <Typography>
-        <WorkOutlineOutlined sx={{fontSize:'3vw',color:'#8dd3f1'}}/>
+        <WorkOutlineOutlined sx={{fontSize:'40px',color:'#8dd3f1'}}/>
         </Typography>
        </Box>
        </Link>
         </Grid>
 
         <Grid item
-      xs={5}
+      xs={11}
       sm={5}
       md={3}
       component={Paper}
       elevation={6}
       square
-      sx={{boxShadow:'none',bgcolor:'#3654d7',color:'white',borderRadius:'10px',textAlign:'center',alignContent:"center",py:2,height:'30%'}}
+      sx={{boxShadow:'none',bgcolor:'#3654d7',color:'white',borderRadius:'10px',textAlign:'center',alignContent:"center",py:2,height:'fit-content'}}
       >
        <Link to={'facilities'} style={{textDecoration:'none',color:'white'}}>
        <Box sx={{display:'flex',justifyContent:'space-evenly',alignItems:'center'}}>
@@ -82,7 +84,7 @@ export default function AdminHome() {
        <h5>Facilities</h5>
        </Typography>
         <Typography>
-        <WorkOutlineOutlined sx={{fontSize:'3vw',color:'#8dd3f1'}}/>
+        <WorkOutlineOutlined sx={{fontSize:'40px',color:'#8dd3f1'}}/>
         </Typography>
        </Box>
        </Link>
@@ -90,13 +92,13 @@ export default function AdminHome() {
 
         <Grid 
         item
-        xs={5}
-        sm={5}
+        xs={11}
+        sm={6}
         md={3}
       component={Paper}
       elevation={6}
       square
-      sx={{boxShadow:'none',bgcolor:'#3654d7',color:'white',borderRadius:'10px',textAlign:'center',alignContent:"center",py:2,height:'30%'}}
+      sx={{boxShadow:'none',bgcolor:'#3654d7',color:'white',borderRadius:'10px',textAlign:'center',alignContent:"center",py:2,height:'fit-content'}}
       >
        <Link to={'ads'} style={{textDecoration:'none',color:'white'}}>
        <Box sx={{display:'flex',justifyContent:'space-evenly',alignItems:'center'}}>
@@ -104,7 +106,7 @@ export default function AdminHome() {
        <h5>Ads</h5>
        </Typography>
         <Typography>
-        <WorkOutlineOutlined sx={{fontSize:'3vw',color:'#8dd3f1'}}/>
+        <WorkOutlineOutlined sx={{fontSize:'40px',color:'#8dd3f1'}}/>
         </Typography>
        </Box>
        </Link>
@@ -115,7 +117,7 @@ export default function AdminHome() {
 <Grid
       item
       sm={12}
-      md={6}
+      md={5}
       component={Paper}
       elevation={6}
       square
@@ -138,7 +140,7 @@ export default function AdminHome() {
     <Grid
       item
       sm={12}
-      md={6}
+      md={5}
       component={Paper}
       elevation={6}
       square

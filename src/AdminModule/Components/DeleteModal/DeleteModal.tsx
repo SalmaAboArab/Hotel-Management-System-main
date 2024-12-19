@@ -36,12 +36,11 @@ type props={
 export default function DeleteModal({name,closeModal,curruntItem}:props) {
   const [open, setOpen] = React.useState(true);
   const handleClose = () => setOpen(false);
-  const token=localStorage.getItem('adminToken')
   async function handleDelete() {
     try {
         let response= await axios.delete(`${baseUrl}/admin/${name}/${curruntItem?._id}`,{
             headers: {
-              Authorization:token
+              Authorization:localStorage.getItem("adminToken")
             },
           });
           toast.success('Item Deleted Successfully')
